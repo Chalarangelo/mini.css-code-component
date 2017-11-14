@@ -1,0 +1,85 @@
+/*
+  Component name: Code Component
+  Author: Angelos Chalaris (chalarangelo@gmail.com)
+  Maintainers: Angelos Chalaris
+  mini.css target version: v3.0.0 (or higher)
+  mini.css module dependencies: core
+*/
+$cc-counter-name:               'line' !default;         // Name for the line counter.
+$cc-line-name:                  'code-line' !default;    // Class name for code lines.
+$cc-code-fonts:  'Menlo, Consolas, monospace' !default;  // Fonts used for code.
+$cc-code-font-size:             0.85rem !default;        // Font size for code.
+$cc-padding-left:               3.5rem !default;         // Left padding for code lines.
+$cc-number-left:                1rem !default;           // Left position of the line numbers.
+$cc-number-width:               2rem !default;           // Width of the line numbers.
+$cc-highlight-a-name:           'highlight-a' !default;  // Class name for highlight A.
+$cc-highlight-b-name:           'highlight-b' !default;  // Class name for highlight B.
+$cc-highlight-c-name:           'highlight-c' !default;  // Class name for highlight C.
+$cc-highlight-a-color:          #4527a0 !default;        // Color for highlight A.
+$cc-highlight-b-color:          #1976d2 !default;        // Color for highlight B.
+$cc-highlight-c-color:          #388e3c !default;        // Color for highlight C.
+$base-root-font-size:           16px !default;           // [External] Root font sizing for all elements (`px` only).
+$__1px: (1px/$base-root-font-size) * 1rem !default;      // [Calculated] Calculated rem value of `1px`.
+$border-color:                  #aaa !default;           // [External] Border color. - Affects line number color.
+$pre-color:                     #1565c0 !default;        // [External] <pre> sidebar color. - Affects line number border
+$universal-margin:              0.5rem !default;         // [External] Universal margin for the most elements
+$universal-padding:             0.5rem !default;         // [External] Universal padding for the most elements
+// CSS variable name definitions [exercise caution if modifying these]
+$cc-padding-left-var:           '--cc-padding-left' !default;
+$cc-number-left-var:            '--cc-number-left' !default;
+$cc-number-width-var:           '--cc-number-width' !default;
+$cc-highlight-a-var:            '--cc-highlight-a-color' !default;
+$cc-highlight-b-var:            '--cc-highlight-b-color' !default;
+$cc-highlight-c-var:            '--cc-highlight-c-color' !default;
+$pre-color-var:                 '--pre-color' !default;
+$border-color-var:              '--border-color' !default;
+$universal-margin-var:          '--universal-margin' !default;
+$universal-padding-var:         '--universal-padding' !default;
+/* Code component CSS variable definitions */
+:root {
+  #{$cc-padding-left-var}: $cc-padding-left;
+  #{$cc-number-left-var}: $cc-number-left;
+  #{$cc-number-width-var}: $cc-number-width;
+  #{$cc-highlight-a-var}: $cc-highlight-a-color;
+  #{$cc-highlight-b-var}: $cc-highlight-b-color;
+  #{$cc-highlight-c-var}: $cc-highlight-c-color;
+  #{$border-color-var}: $border-color;
+  #{$universal-margin-var}: $universal-margin;
+  #{$universal-padding-var}: $universal-padding;
+}
+pre {
+  counter-reset: #{$cc-counter-name};
+  & > * {
+    font-family: #{$cc-code-fonts}; // Reapply to avoid problems
+    font-size: $cc-code-font-size;
+  }
+  & > .#{$cc-line-name} {
+    padding-left: var(#{$cc-padding-left-var});
+    &:before {
+      counter-increment: #{$cc-counter-name};
+      content: counter(#{$cc-counter-name});
+      display: inline-block;
+      border-right: $__1px solid var(#{$pre-color-var});
+      padding: 0 var(#{$universal-padding-var});
+      margin-right: var(#{$universal-margin-var});
+      color: var(#{$border-color-var});
+      position: absolute;
+      left: var(#{$cc-number-left-var});
+      width: var(#{$cc-number-width-var});
+      text-align: right;
+    }
+    & > * {
+      line-height: 0; // Prevent highlights from breaking up the code block.
+      font-family: #{$cc-code-fonts}; // Reapply to avoid problems
+    }
+  }
+  .#{$cc-highlight-a-name} {
+    color: var(#{$cc-highlight-a-var});
+  }
+  .#{$cc-highlight-b-name} {
+    color: var(#{$cc-highlight-b-var});
+  }
+  .#{$cc-highlight-c-name} {
+    color: var(#{$cc-highlight-c-var});
+  }
+}
