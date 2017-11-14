@@ -1,7 +1,7 @@
 # mini.css Code Component
 A [mini.css](https://minicss.org) module for better code presentation.
 
-![Example](/readme_thumb.png)
+![Example](/readme_thumb.PNG)
 
 ## Installation
 
