@@ -1,6 +1,6 @@
 {
   "name": "mini.css-code-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A mini.css module for better code presentation.",
   "main": "dist/mini-code.min.css",
   "scripts": {
